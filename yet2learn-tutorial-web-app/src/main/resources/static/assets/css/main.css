@@ -683,7 +683,7 @@ footer {
     padding-bottom: 30px; }
   .template-card .card .section-subtitle {
     width: 78%; }
-  .template-card .card input[type="text"] {
+  .template-card .card input[type="text"],input[type="password"],input[type="email"] {
     border: 2px solid #e1e8ee;
     border-radius: 5px;
     color: #43484d;
