@@ -9,8 +9,10 @@ import com.yet2learn.yet2learntutorialwebapp.entity.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 
-//	User findByEmail(String email);
-//
-//	User findByUserName(String userName);
+	User findByEmail(String email);
+
+	User findByUserName(String userName);
+	
+	User findByUserNameOrEmail(String username, String username2);
 
 }
