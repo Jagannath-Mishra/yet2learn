@@ -42,16 +42,16 @@
 					</div>
 
 					<form class="row g-3" name="loginForm"
-						onsubmit="return validateForm()">
+						onsubmit="return validateLoginForm()">
 						<div class="row">
 							<div class="col-md-6">
 								<input type="email" name="email" class="search-field"
-									placeholder="Email Address" required />
+									placeholder="Email Address"  />
 								<div id="valid-email" class="text-danger"></div>
 							</div>
 							<div class="col-md-6">
 								<input type="password" name="password" class="search-field"
-									placeholder="Password" required />
+									placeholder="Password" />
 								<div id="valid-password" class="text-danger"></div>
 							</div>
 						</div>
@@ -73,31 +73,7 @@
 	</section>
 
 
-	<script type="text/javascript">
-		function validateForm() {
-			var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-			let email = document.forms["loginForm"]["email"];
-			if (email.value == "") {
-				document.getElementById("valid-email").innerHTML = "Please enter your email address!";
-				email.focus();
-				return false;
-			}
-			if (!email.value.match(mailformat)) {
-				document.getElementById("valid-email").innerHTML = "You have entered an invalid email address!";
-				return false;
-			}
 
-			let password = document.forms["loginForm"]["password"];
-			if (password.value == "") {
-				document.getElementById("valid-password").innerHTML = "Please enter your password!";
-				password.focus();
-				return false;
-
-			}
-			
-			
-		}
-	</script>
 	<!-- Call To Action -->
 	<section class="section">
 		<div class="container">
@@ -144,9 +120,9 @@
 		</div>
 	</footer>
 
-	<script src="assets/js/jquery-1.12.3.min.js"></script>
-	<script src="assets/js/bootstrap.min.js"></script>
-	<script src="assets/js/main.js"></script>
+	<script type="text/javascript" src="assets/js/jquery-1.12.3.min.js"></script>
+	<script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="assets/js/main.js"></script>
 </body>
 
 <!-- Mirrored from xvelopers.com/html/knowledge/Demo3/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 31 Aug 2021 19:21:45 GMT -->
