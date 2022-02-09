@@ -11,7 +11,10 @@
 
 	<main class="content-wrapper">
 	<div class="container">
-	  <h1>This is Welcome page</h1>
+	  <h1>Welcome back!! </h1>
+	  <h2><span sec:authentication="name"></span></h2>
+	  <p>Roles: <span sec:authentication="principal.authorities"	></span></p>
+					
 	</div>
 	</main>
 	

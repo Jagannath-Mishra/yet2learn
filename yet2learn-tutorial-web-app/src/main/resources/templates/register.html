@@ -36,21 +36,21 @@
                 </header>
 
                 <form class="row g-3" name="regform"
-						onsubmit="return validSignUp()">
+						onsubmit="return validSignUp()" method="POST" th:object="${UserDTO}" th:action="@{/sign-up}">
                     <div class="row">
-                        <div class="col-md-6">   <input type="text" name="fname" class="search-field" placeholder="First Name"  />
+                        <div class="col-md-6">   <input type="text" name="fname" th:field="*{fname}" class="search-field" placeholder="First Name"  />
                         <div id="valid-firstname" class="text-danger"></div>
                         </div>
-                        <div class="col-md-6">   <input type="text" name="lname" class="search-field" placeholder="Last Name"  />
+                        <div class="col-md-6">   <input type="text" name="lname" th:field="*{lname}" class="search-field" placeholder="Last Name"  />
                         <div id="valid-lastname" class="text-danger"></div>
                         </div>
-                        <div class="col-md-12">   <input type="email" name="email" class="search-field" placeholder="Email Address"  />
+                        <div class="col-md-12">   <input type="email" name="email" th:field="*{email}" class="search-field" placeholder="Email Address"  />
                         <div id="valid-email" class="text-danger"></div>
                         </div>
-                        <div class="col-md-6">   <input type="password"  name="password" class="search-field" placeholder="Password"  />
+                        <div class="col-md-6">   <input type="password"  name="password" th:field="*{password}" class="search-field" placeholder="Password"  />
                         <div id="valid-password" class="text-danger"></div>
                         </div>
-                        <div class="col-md-6">   <input type="password" name="c-pass" class="search-field" placeholder="Confirm Password"/>
+                        <div class="col-md-6">   <input type="password" name="confirmPass" class="search-field" placeholder="Confirm Password"/>
                         
                         </div>
                     </div>
@@ -102,7 +102,7 @@ function validSignUp() {
 		password.focus();
 		return false;
 	}
-	var confirmpassword = document.forms["regform"]["c-pass"];
+	var confirmpassword = document.forms["regform"]["confirmPass"];
 	if(confirmpassword.value == ""){
 		document.getElementById("valid-password").innerHTML = "Please enter confirm password";
 		confirmpassword.focus();
@@ -116,49 +116,6 @@ function validSignUp() {
 		
 	}
 }
-/* 
-function validateRegistationForm() {
-	console.log("1");	
-	//var nameformat = ([a - zA - Z]);
-	let firstName = document.forms["registationForm"]["firstname"];
-	if (firstName.value == "") {
-		document.getElementById("valid-firstname").innerHTML = "Please enter your first name!";
-		firstname.value.focus();
-		return false;
-
-}	
-	let lastname = document.forms["registationForm"]["lastname"];
-	if (lastname.value == "") {
-		document.getElementById("valid-lastname").innerHTML = "Please enter your last name!";
-		lastname.value.focus();
-		alert("msg");
-		return false;
-
-}
-	var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-	let email = document.forms["registationForm"]["email"];
-	if (email.value == "") {
-		document.getElementById("valid-email").innerHTML = "Please enter your email address!";
-		email.value.focus();
-		return false;
-	}
-	if (!email.value.match(mailformat)) {
-		document.getElementById("valid-email").innerHTML = "You have entered an invalid email address!";
-		email.value.focus();
-		return false;
-		
-	}
-
-	let password = document.forms["registationForm"]["password"];
-	if (password.value == "") {
-		document.getElementById("valid-password").innerHTML = "Please enter your password!";
-		password.value.focus();
-		return false;
-
-	}
-
-
-}*/
 
 
 </script>

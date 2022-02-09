@@ -3,6 +3,7 @@ package com.yet2learn.yet2learntutorialwebapp.entity;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -20,7 +21,7 @@ public class CustomUserDetails implements UserDetails {
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		Collection<Role> roles = user.getRoles();
+		Set<Role> roles = user.getRoles();
 		List<SimpleGrantedAuthority> authorities = new ArrayList<>();
 
 		for (Role role : roles) {
@@ -37,7 +38,7 @@ public class CustomUserDetails implements UserDetails {
 
 	@Override
 	public String getUsername() {
-		return user.getEmail();
+		return user.getFirstName() + " " + user.getLastName();
 	}
 
 	@Override
@@ -47,7 +48,7 @@ public class CustomUserDetails implements UserDetails {
 
 	@Override
 	public boolean isAccountNonLocked() {
-		return user.isAccountNonLocked();
+		return true;
 	}
 
 	@Override
@@ -57,7 +58,7 @@ public class CustomUserDetails implements UserDetails {
 
 	@Override
 	public boolean isEnabled() {
-		return user.isEnabled();
+		return true;
 	}
 
 	@Override
@@ -72,5 +73,7 @@ public class CustomUserDetails implements UserDetails {
 	public void setUser(User user) {
 		this.user = user;
 	}
+	
+	
 
 }

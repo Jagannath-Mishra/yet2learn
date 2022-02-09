@@ -1,12 +1,12 @@
 package com.yet2learn.yet2learntutorialwebapp.entity;
 
-import java.util.Collection;
 import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -28,9 +28,9 @@ public class User {
 	private Long id;
 
 	@Column(name = "user_name")
-	@Length(min = 5, message = "*Your user name must have at least 5 characters")
-	@NotEmpty(message = "*Please provide a user name")
-	private String userName;
+	//@Length(min = 5, message = "*Your user name must have at least 5 characters")
+	//@NotEmpty(message = "*Please provide a user name")
+	private String username;
 
 	@Column(name = "email")
 	@Email(message = "*Please provide a valid Email")
@@ -53,9 +53,9 @@ public class User {
 	@Column(name = "active")
 	private Boolean active;
 
-	@ManyToMany(cascade = CascadeType.MERGE)
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
 	@JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
-	private Collection<Role> roles;
+	private Set<Role> roles;
 
 	private boolean enabled;
 	 
@@ -85,12 +85,12 @@ public class User {
 		this.id = id;
 	}
 
-	public String getUserName() {
-		return userName;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setUserName(String username) {
+		this.username = username;
 	}
 
 	public String getEmail() {
@@ -172,15 +172,18 @@ public class User {
 
 
 
-	public Collection<Role> getRoles() {
+	public Set<Role> getRoles() {
 		return roles;
 	}
 
 
 
-	public void setRoles(Collection<Role> roles) {
-		this.roles = roles;
+	public void setUsername(String username) {
+		this.username = username;
 	}
- 
+
+
+
+
 	
 }

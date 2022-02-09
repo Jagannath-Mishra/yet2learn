@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
 
 import com.yet2learn.yet2learntutorialwebapp.service.CustomUserDetailsService;
@@ -23,7 +24,7 @@ public class WebSecurityConfigurations extends WebSecurityConfigurerAdapter {
 	}
 
 	@Bean
-	public Pbkdf2PasswordEncoder passwordEncoder() {
+	public Pbkdf2PasswordEncoder pbkdf2PasswordEncoder() {
 		return new Pbkdf2PasswordEncoder();
 	}
 
@@ -31,7 +32,7 @@ public class WebSecurityConfigurations extends WebSecurityConfigurerAdapter {
 	public DaoAuthenticationProvider authenticationProvider() {
 		DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
 		authProvider.setUserDetailsService(userDetailsService());
-		authProvider.setPasswordEncoder(passwordEncoder());
+		authProvider.setPasswordEncoder(pbkdf2PasswordEncoder());
 
 		return authProvider;
 	}
@@ -43,12 +44,15 @@ public class WebSecurityConfigurations extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/static/**", "/resources/**","/assets/**", "/sign-up").permitAll().antMatchers("/")
-				.hasAnyAuthority("USER", "CREATOR", "EDITOR", "ADMIN")
-				.antMatchers("/create").hasAnyAuthority("ADMIN", "CREATOR").antMatchers("/edit/**").hasAnyAuthority("ADMIN", "EDITOR")
-				.antMatchers("/delete/**").hasAuthority("ADMIN").anyRequest().authenticated().and().formLogin()
-				.loginPage("/sign-in").permitAll().and().logout().permitAll().and().exceptionHandling()
-				.accessDeniedPage("/403");
+		http.authorizeRequests().antMatchers("/static/**", "/resources/**","/assets/**", "/sign-up").permitAll()
+		.antMatchers("/auth-user/**").authenticated()
+        .antMatchers("/**").permitAll()
+		.antMatchers("/read/**").hasAnyAuthority("CREATOR", "EDITOR", "ADMIN")
+		.antMatchers("/create/**").hasAnyAuthority("ADMIN", "CREATOR")
+		.antMatchers("/edit/**").hasAnyAuthority("ADMIN","EDITOR")
+		.antMatchers("/delete/**").hasAuthority("ADMIN")
+		.anyRequest().authenticated().and().formLogin().loginPage("/sign-in").defaultSuccessUrl("/auth-user", true).permitAll().and().logout()
+		.permitAll().and().exceptionHandling().accessDeniedPage("/403");
 
 	}
 
@@ -56,5 +60,5 @@ public class WebSecurityConfigurations extends WebSecurityConfigurerAdapter {
 	public AuthenticationManager customAuthenticationManager() throws Exception {
 		return authenticationManager();
 	}
-
+	
 }

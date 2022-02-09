@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <!-- Mirrored from xvelopers.com/html/knowledge/Demo3/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 31 Aug 2021 19:21:45 GMT -->
 <head>
@@ -42,11 +42,12 @@
 					</div>
 
 					<form class="row g-3" name="loginForm"
-						onsubmit="return validateLoginForm()">
+						onsubmit="return validateLoginForm()" method="POST"
+						th:action="@{/sign-in}">
 						<div class="row">
 							<div class="col-md-6">
-								<input type="email" name="email" class="search-field"
-									placeholder="Email Address"  />
+								<input type="email" name="username" class="search-field"
+									placeholder="Email Address" />
 								<div id="valid-email" class="text-danger"></div>
 							</div>
 							<div class="col-md-6">
@@ -54,6 +55,12 @@
 									placeholder="Password" />
 								<div id="valid-password" class="text-danger"></div>
 							</div>
+
+						</div>
+						<div class="row">
+							<span class="text-danger" th:text="${error}"></span> <input
+								type="hidden" name="${_csrf.parameterName}"
+								value="${_csrf.token}" />
 						</div>
 
 						<div class="row">

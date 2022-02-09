@@ -4,6 +4,7 @@ import java.util.HashSet;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -28,14 +29,14 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void save(User user) {
 		user.setPassword(pbkdf2PasswordEncoder.encode(user.getPassword()));
-		// user.setRoles(new HashSet<>(roleRepository.findAll()));
-		user.setRoles(new HashSet<>(roleRepository.findByName("USER")));
+		user.setRoles(new HashSet<>(roleRepository.findAll()));
+		//user.setRoles(new HashSet<>(roleRepository.findByName("USER")));
 		userRepository.save(user);
 	}
 
 	@Override
 	public User findByUsername(String username) {
-		return userRepository.findByUserName(username);
+		return userRepository.findByUsername(username);
 	}
 
 	@Override
