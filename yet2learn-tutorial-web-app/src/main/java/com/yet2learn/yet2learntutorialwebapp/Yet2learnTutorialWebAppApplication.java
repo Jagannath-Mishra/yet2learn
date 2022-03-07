@@ -10,10 +10,10 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import com.yet2learn.yet2learntutorialwebapp.service.SpringSecurityAuditorAware;
 
+@SpringBootApplication
 @EnableJpaRepositories
 @EntityScan
 @EnableJpaAuditing(auditorAwareRef = "auditorAware")
-@SpringBootApplication
 public class Yet2learnTutorialWebAppApplication {
 
 	@Bean

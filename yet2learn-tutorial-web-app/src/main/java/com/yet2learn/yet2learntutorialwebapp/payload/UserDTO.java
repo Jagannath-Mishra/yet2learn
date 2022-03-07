@@ -1,15 +1,15 @@
 package com.yet2learn.yet2learntutorialwebapp.payload;
 
 public class UserDTO {
-	
+
 	private String fname;
-	
+
 	private String lname;
-	
+
 	private String email;
-	
+
 	private String password;
-	
+
 	private String confirmPass;
 
 	public String getFname() {
@@ -51,8 +51,5 @@ public class UserDTO {
 	public void setConfirmPass(String confirmPass) {
 		this.confirmPass = confirmPass;
 	}
-	
-	
-	
 
 }

@@ -16,15 +16,14 @@ public class ContentServiceImpl implements ContentService {
 
 	@Autowired
 	ContentRepository contentRepository;
-	
+
 	@Autowired
 	SubContentRepository subContentRepository;
-	
-	
+
 	@Override
 	public ContentResponseDTO getContentByCourseName(String courseName) {
-		
-		return null;	
+
+		return null;
 	}
 
 	@Override
@@ -32,11 +31,11 @@ public class ContentServiceImpl implements ContentService {
 		Content content = contentRepository.getById(contentId);
 		List<Content> listContent = contentRepository.findByCourseId(content.getCourse().getId());
 		List<ContentResponseDTO> response = new ArrayList<>();
-		for(Content data:listContent) {
-		ContentResponseDTO obj = new ContentResponseDTO();
-		obj.setContentHeading(data.getContentHeading());
-		obj.setSubContent(data.getSubContent());
-		response.add(obj);
+		for (Content data : listContent) {
+			ContentResponseDTO obj = new ContentResponseDTO();
+			obj.setContentHeading(data.getContentHeading());
+			obj.setSubContent(data.getSubContent());
+			response.add(obj);
 		}
 		System.out.println(response);
 		return response;

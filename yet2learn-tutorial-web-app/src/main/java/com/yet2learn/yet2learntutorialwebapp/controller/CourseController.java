@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class CourseController {
 
 	private static final Logger logger = LoggerFactory.getLogger(CourseController.class);
-	
-	@RequestMapping(value="/courses/create", method=RequestMethod.GET)
+
+	@RequestMapping(value = "/courses/create", method = RequestMethod.GET)
 	public String createNewCourse() {
 		return "new-course";
 	}

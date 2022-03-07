@@ -2,12 +2,10 @@ package com.yet2learn.yet2learntutorialwebapp.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -54,13 +52,12 @@ public class WebSecurityConfigurations extends WebSecurityConfigurerAdapter {
 //		.antMatchers("/delete/**").hasAuthority("ADMIN")
 //		.anyRequest().authenticated().and().formLogin().loginPage("/sign-in").defaultSuccessUrl("/auth-user", true).permitAll().and().logout()
 //		.permitAll().and().exceptionHandling().accessDeniedPage("/403");
-		http.authorizeRequests().antMatchers("/assets/**","/css/**", "/js/**", "/sign-up").permitAll()
-		.antMatchers("/**").permitAll()
-		.antMatchers("/create/**").hasAnyAuthority("CREATOR","ADMIN", "EDITOR")
-		.antMatchers("/edit/**").hasAnyAuthority("ADMIN","EDITOR")
-		.antMatchers("/delete/**").hasAuthority("ADMIN")
-		.anyRequest().authenticated().and().formLogin().loginPage("/sign-in").defaultSuccessUrl("/auth-user", true).permitAll().and().logout()
-		.permitAll().and().exceptionHandling().accessDeniedPage("/403");
+		http.authorizeRequests().antMatchers("/assets/**", "/css/**", "/js/**", "/sign-up").permitAll()
+				.antMatchers("/**").permitAll().antMatchers("/create/**").hasAnyAuthority("CREATOR", "ADMIN", "EDITOR")
+				.antMatchers("/edit/**").hasAnyAuthority("ADMIN", "EDITOR").antMatchers("/delete/**")
+				.hasAuthority("ADMIN").anyRequest().authenticated().and().formLogin().loginPage("/sign-in")
+				.defaultSuccessUrl("/auth-user", true).permitAll().and().logout().permitAll().and().exceptionHandling()
+				.accessDeniedPage("/403");
 
 	}
 
@@ -68,7 +65,5 @@ public class WebSecurityConfigurations extends WebSecurityConfigurerAdapter {
 	public AuthenticationManager customAuthenticationManager() throws Exception {
 		return authenticationManager();
 	}
-	
 
-	
 }

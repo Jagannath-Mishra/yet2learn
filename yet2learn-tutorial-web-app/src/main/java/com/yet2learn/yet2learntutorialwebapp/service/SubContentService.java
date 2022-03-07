@@ -6,4 +6,6 @@ public interface SubContentService {
 
 	SubContentResponseDTO getSubContentByURL(String url);
 
+	SubContentResponseDTO getSubContentById(Long id);
+
 }

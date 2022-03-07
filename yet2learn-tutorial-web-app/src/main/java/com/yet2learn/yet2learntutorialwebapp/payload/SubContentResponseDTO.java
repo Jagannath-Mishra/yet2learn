@@ -25,6 +25,8 @@ public class SubContentResponseDTO {
 	private boolean enable;
 
 	private Content content;
+	
+	private String nextTopic;
 
 	private Date lastModifiedDate;
 
@@ -125,5 +127,17 @@ public class SubContentResponseDTO {
 	public void setLastModifiedBy(String lastModifiedBy) {
 		this.lastModifiedBy = lastModifiedBy;
 	}
+
+	public String getNextTopic() {
+		return nextTopic;
+	}
+
+	public void setNextTopic(String nextTopic) {
+		this.nextTopic = nextTopic;
+	}
+
+	
+	
+	
 
 }

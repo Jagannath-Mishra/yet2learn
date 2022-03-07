@@ -19,7 +19,7 @@
 <!-- JS -->
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	
+
 </head>
 <body class="single-knowledgebase">
 
@@ -31,7 +31,7 @@
 	<div class="breadcrumbs">
 		<div class="container-fluid">
 			<ol>
-				<li><a >Home</a></li>
+				<li><a>Home</a></li>
 				<li><a href="">Java</a></li>
 				<li class="active">Getting Started With Java</li>
 			</ol>
@@ -54,18 +54,18 @@
 							<div class="widget widget_categories">
 								<span class="icon icon-folder"></span>
 								<h4>Java Tutorial</h4>
-								
+
 								<ul th:each="toc,t : ${tableOfContents}">
-									<li ><a><strong><span th:text="${toc.contentHeading}" ></strong></span></a> 
-										<th:block th:each="subToc,s : ${toc.getSubContent()}">
-										<ul>
-											<li >
-											<a th:href="@{/{url}(url=${subToc.subContentMetaURL})}" ><span th:text="${subToc.subContentSortName}"></span></a>
-											</li>
-											
-										</ul>
-										</th:block>
-									</li>
+									<li><a><strong><span
+												th:text="${toc.contentHeading}"></strong></span></a> <th:block
+											th:each="subToc,s : ${toc.getSubContent()}">
+											<ul>
+												<li><a
+													th:href="@{/{url}(url=${subToc.subContentMetaURL})}"><span
+														th:text="${subToc.subContentSortName}"></span></a></li>
+
+											</ul>
+										</th:block></li>
 								</ul>
 							</div>
 						</div>
@@ -76,76 +76,108 @@
 				</div>
 
 				<div class="col-lg-8">
+					<span th:each="content,c : ${contents}">
+						<article class="post">
+							<h1 th:text="${content.subContentHeading}"></h1>
+							<div class="row">
+								<div class="col-lg-8">
+									<ul class="meta">
+										<li><span>Modified By:</span> <span
+											th:text="${content.lastModifiedBy}"></span></li>
+										<li><span>Last Updated:</span> <span
+											th:text="${content.lastModifiedDate}"></span></li>
+									</ul>
+								</div>
+								<div class="col-lg-2">
+									<span th:if="${content.prevPageId}"> <a
+										th:href="@{/navigate/{page-id}(page-id=${content.prevPageId})}"
+										class="btn btn-success">&nbsp;<i
+											class="fa fa-arrow-circle-left" style="font-size: 22px"></i>&nbsp;&nbsp;
+											Previous
+									</a>
+									</span>
+								</div>
+								<span th:if="${content.nextPageId}">
+									<div class="col-lg-2">
+										<a
+											th:href="@{/navigate/{page-id}(page-id=${content.nextPageId})}"
+											class="btn btn-success">Next &nbsp;&nbsp;<i
+											class="fa fa-arrow-circle-right" style="font-size: 22px"></i></a>
+									</div>
+								</span>
+							</div>
 
-					<article class="post" th:each="content,c : ${contents}">
-						<h1  th:text="${content.subContentHeading}"></h1>
+
+
+
+							<div class="alert alert-info" role="alert">
+								<span class="icon-info"></span>
+								<p>This documentation is always evolving. If you've not been
+									here for a while, perhaps check out the This documentation is
+									always evolving.</p>
+							</div>
+
+							<p>There are many variations of passages of Lorem Ipsum
+								available, but the majority have suffered alteration in some
+								form, by injected humour, or randomised words which don’t look
+								even slightly believable.</p>
+							<p>If you are going to use a passage of Lorem Ipsum, you need
+								to be sure there isn’t anything embarrassing hidden in the
+								middle of text. All the Lorem Ipsum generators on the Internet
+								tend to repeat predefined chunks as necessary, making this the
+								first true generator on the Internet.</p>
+							<img class="aligncenter" src="assets/images/connection.png"
+								alt="">
+
+							<h2>Auth Services & Requirments</h2>
+							<p>If you are going to use a passage of Lorem Ipsum, you need
+								to be sure there isn’t anything embarrassing hidden in the
+								middle of text. All the Lorem Ipsum generators on the Internet
+								tend to repeat predefined chunks as necessary, making this the
+								first true generator on the Internet.</p>
+
+							<blockquote>
+								echo "Hello World"; echo "\n"; List
+								<Integer> integers = new ArrayList<Integer>();
+								integers.add(1); integers.add(2); integers.add(3); 
+							</blockquote>
+							<h2>Final Step</h2>
+							<p>There are many variations of passages of Lorem Ipsum
+								available, but the majority have suffered alteration in some
+								form, by injected humour, or randomised words which don’t look
+								even slightly believable.</p>
+						</article>
+
 						<div class="row">
-							<div class="col-lg-8">
-								<ul class="meta">
-									<li><span>Modified By:</span> <span th:text="${content.lastModifiedBy}"></span></li>
-									<li><span>Last Updated:</span> <span th:text="${content.lastModifiedDate}"></span></li>
-								</ul>
-							</div>
 							<div class="col-lg-2">
-								<a href="#" class="btn btn-success">&nbsp;<i class="fa fa-arrow-circle-left" style="font-size:22px"></i>&nbsp;&nbsp; Previous</a>
+								<span th:if="${content.prevPageId}"> <a
+									th:href="@{/navigate/{page-id}(page-id=${content.prevPageId})}"
+									class="btn btn-success">&nbsp;<i
+										class="fa fa-arrow-circle-left" style="font-size: 22px"></i>&nbsp;&nbsp;
+										Previous
+								</a>
+								</span>
 							</div>
+							<div class="col-lg-8"></div>
 							<div class="col-lg-2">
-								<a href="#" class="btn btn-success">Next &nbsp;&nbsp;<i class="fa fa-arrow-circle-right" style="font-size:22px"></i></a>
+								<span th:if="${content.nextPageId}"> <a
+									th:href="@{/navigate/{page-id}(page-id=${content.nextPageId})}"
+									class="btn btn-success">Next &nbsp;&nbsp;<i
+										class="fa fa-arrow-circle-right" style="font-size: 22px"></i></a>
+								</span>
+							</div>
+							<div class="col-lg-12 " th:if="${content.nextPageId}">
+								<div class="bd-callout bd-callout-info">
+								  <h3>Next Topic:</h3>
+									<a th:href="@{/navigate/{page-id}(page-id=${content.nextPageId})}"><h3 th:text="${content.nextTopic}"></h3></a>
+
+									<p>Options for individual tooltips can alternatively be
+										specified through the use of data attributes, as explained
+										above.</p>
+								</div>
 							</div>
 						</div>
-
-
-
-
-						<div class="alert alert-info" role="alert">
-							<span class="icon-info"></span>
-							<p>This documentation is always evolving. If you've not been
-								here for a while, perhaps check out the This documentation is
-								always evolving.</p>
-						</div>
-
-						<p>There are many variations of passages of Lorem Ipsum
-							available, but the majority have suffered alteration in some
-							form, by injected humour, or randomised words which don’t look
-							even slightly believable.</p>
-						<p>If you are going to use a passage of Lorem Ipsum, you need
-							to be sure there isn’t anything embarrassing hidden in the middle
-							of text. All the Lorem Ipsum generators on the Internet tend to
-							repeat predefined chunks as necessary, making this the first true
-							generator on the Internet.</p>
-						<img class="aligncenter" src="assets/images/connection.png" alt="">
-
-						<h2>Auth Services & Requirments</h2>
-						<p>If you are going to use a passage of Lorem Ipsum, you need
-							to be sure there isn’t anything embarrassing hidden in the middle
-							of text. All the Lorem Ipsum generators on the Internet tend to
-							repeat predefined chunks as necessary, making this the first true
-							generator on the Internet.</p>
-						
-						<blockquote>echo "Hello World"; echo "\n";
-						List<Integer> integers = new ArrayList<Integer>();
-						integers.add(1);
-						integers.add(2);
-						integers.add(3);
-						</blockquote>
-						<h2>Final Step</h2>
-						<p>There are many variations of passages of Lorem Ipsum
-							available, but the majority have suffered alteration in some
-							form, by injected humour, or randomised words which don’t look
-							even slightly believable.</p>
-					</article>
-
-					<div class="row" >
-						<div class="col-lg-2">
-								<a href="#" class="btn btn-success">&nbsp;<i class="fa fa-arrow-circle-left" style="font-size:22px"></i>&nbsp;&nbsp; Previous</a>
-						</div>
-						<div class="col-lg-8" >
-							<h3 ><i class="fa fa-angle-double-right" style="font-size:30px;color:red"></i> Read Next: topic</h3>
-						</div>
-						<div class="col-lg-2">
-						<a href="#" class="btn btn-success">Next &nbsp;&nbsp;<i class="fa fa-arrow-circle-right" style="font-size:22px"></i></a>
-						</div>
-					</div>
+					</span>
 					<div class="feedback">
 						<h3>Was this article helpful to you?</h3>
 						<a class="btn btn-default" href="#">Yes</a> <a

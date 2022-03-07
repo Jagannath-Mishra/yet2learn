@@ -8,9 +8,8 @@ import org.springframework.stereotype.Repository;
 import com.yet2learn.yet2learntutorialwebapp.entity.Role;
 
 @Repository
-public interface RoleRepository extends JpaRepository<Role, Integer>{
+public interface RoleRepository extends JpaRepository<Role, Integer> {
 
-	
 	Set<Role> findByName(String string);
 
 }

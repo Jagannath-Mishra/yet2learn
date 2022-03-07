@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "roles")
-public class Role implements Serializable{
+public class Role implements Serializable {
 	/**
 	 * 
 	 */
@@ -21,8 +21,7 @@ public class Role implements Serializable{
 	private Long id;
 
 	private String name;
-	
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -38,10 +37,5 @@ public class Role implements Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
-
-
-	
-
-	
 
 }

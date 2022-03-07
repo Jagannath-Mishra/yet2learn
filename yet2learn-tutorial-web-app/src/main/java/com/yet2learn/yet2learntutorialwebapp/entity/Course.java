@@ -32,7 +32,7 @@ public class Course extends Auditable<User> implements Serializable {
 
 	@Column(name = "course_desc", columnDefinition = "varchar(225)")
 	private String courseDesc;
-	
+
 	private String url;
 
 	public String getUrl() {
@@ -88,6 +88,5 @@ public class Course extends Auditable<User> implements Serializable {
 	public void setContent(Set<Content> content) {
 		this.content = content;
 	}
-
 
 }

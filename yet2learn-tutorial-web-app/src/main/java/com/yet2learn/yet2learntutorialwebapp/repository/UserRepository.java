@@ -5,7 +5,6 @@ import org.springframework.stereotype.Repository;
 
 import com.yet2learn.yet2learntutorialwebapp.entity.User;
 
-
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 

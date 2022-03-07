@@ -31,20 +31,20 @@ public class Content extends Auditable<User> implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@Column(columnDefinition = "varchar(55)")
 	private String contentHeading;
 
 	private Integer hits;
-	
+
 	@Column(columnDefinition = "tinyint(1) default 1")
 	private boolean enable;
 
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "course_id", referencedColumnName = "id", nullable = false)
 	private Course course;
-	
-	@OneToMany(mappedBy = "content", fetch = FetchType.LAZY, cascade = CascadeType.ALL,  orphanRemoval = true)
+
+	@OneToMany(mappedBy = "content", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<SubContent> subContent = new ArrayList<>();
 
 	public Long getId() {
@@ -101,7 +101,4 @@ public class Content extends Auditable<User> implements Serializable {
 				+ ", course=" + course + ", subContent=" + subContent + "]";
 	}
 
-
-	
-	
 }

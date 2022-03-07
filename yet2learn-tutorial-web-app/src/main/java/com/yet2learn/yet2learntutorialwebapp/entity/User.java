@@ -22,7 +22,7 @@ import org.hibernate.validator.constraints.Length;
 
 @Entity
 @Table(name = "users")
-public class User implements Serializable{
+public class User implements Serializable {
 
 	/**
 	 * 
@@ -34,8 +34,8 @@ public class User implements Serializable{
 	private Long id;
 
 	@Column(name = "user_name")
-	//@Length(min = 5, message = "*Your user name must have at least 5 characters")
-	//@NotEmpty(message = "*Please provide a user name")
+	// @Length(min = 5, message = "*Your user name must have at least 5 characters")
+	// @NotEmpty(message = "*Please provide a user name")
 	private String username;
 
 	@Column(name = "email")
@@ -64,24 +64,20 @@ public class User implements Serializable{
 	private Set<Role> roles;
 
 	private boolean enabled;
-	 
-    @Column(name = "account_non_locked")
-    private boolean accountNonLocked;
-     
-    @Column(name = "failed_attempt")
-    private int failedAttempt;
-     
-    @Column(name = "lock_time")
-    private Date lockTime;
-    
-	
+
+	@Column(name = "account_non_locked")
+	private boolean accountNonLocked;
+
+	@Column(name = "failed_attempt")
+	private int failedAttempt;
+
+	@Column(name = "lock_time")
+	private Date lockTime;
 
 	public User() {
 		super();
 
 	}
-
-
 
 	public Long getId() {
 		return id;
@@ -115,7 +111,6 @@ public class User implements Serializable{
 		this.password = password;
 	}
 
-	
 	public String getLastName() {
 		return lastName;
 	}
@@ -176,20 +171,12 @@ public class User implements Serializable{
 		this.lockTime = lockTime;
 	}
 
-
-
 	public Set<Role> getRoles() {
 		return roles;
 	}
-
-
 
 	public void setUsername(String username) {
 		this.username = username;
 	}
 
-
-
-
-	
 }

@@ -297,7 +297,6 @@ p {
 	position: relative;
 }
 
-
 .navbar {
 	padding: 10px 0 10px 0;
 	margin-bottom: 2px;
@@ -917,6 +916,22 @@ footer .copyright {
 	padding-top: 30px;
 }
 
+.bd-callout {
+	padding: 1.25rem;
+	margin-top: 1.25rem;
+	margin-bottom: 1.25rem;
+	border: 2px solid #eee;
+	border-left-width: 0.50rem;
+	border-radius: 0.25rem;
+}
+
+.bd-callout-info {
+	border-left-color: #7dc855;
+	font-size: 15px;
+	font-weight: 300;
+	font-family: "Roboto", sans-serif;
+}
+
 /* = Responsive
 -------------------------------------------------------------- */
 /* Custom, iPhone Retina */
@@ -965,7 +980,6 @@ footer .copyright {
 	footer .copyright {
 		float: left;
 	}
-	
 }
 
 /* Extra Small Devices, Phones */

@@ -3,22 +3,17 @@ package com.yet2learn.yet2learntutorialwebapp.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.yet2learn.yet2learntutorialwebapp.entity.User;
 import com.yet2learn.yet2learntutorialwebapp.payload.UserDTO;
-import com.yet2learn.yet2learntutorialwebapp.repository.SubContentRepository;
 import com.yet2learn.yet2learntutorialwebapp.service.SecurityService;
 import com.yet2learn.yet2learntutorialwebapp.service.UserService;
-import com.yet2learn.yet2learntutorialwebapp.validator.UserValidator;
 
 @Controller
 public class UserController {
@@ -30,10 +25,6 @@ public class UserController {
 
 	@Autowired
 	private SecurityService securityService;
-	
-	
-
-
 
 	@GetMapping("/sign-up")
 	public String register(Model model) {
@@ -73,5 +64,4 @@ public class UserController {
 		return "login";
 	}
 
-	
 }

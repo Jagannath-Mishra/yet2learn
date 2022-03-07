@@ -9,7 +9,7 @@ public class CourseResponseDTO {
 	private String courseName;
 
 	private String courseDesc;
-	
+
 	private String url;
 
 	public String getUrl() {
@@ -21,13 +21,13 @@ public class CourseResponseDTO {
 	}
 
 	private boolean enable;
-	
+
 	private Set<Content> content;
 
 	public String getCourseName() {
 		return courseName;
 	}
-	
+
 	public void setCourseName(String courseName) {
 		this.courseName = courseName;
 	}
@@ -55,6 +55,12 @@ public class CourseResponseDTO {
 	public void setContent(Set<Content> content) {
 		this.content = content;
 	}
+
+	@Override
+	public String toString() {
+		return "CourseResponseDTO [courseName=" + courseName + ", courseDesc=" + courseDesc + ", url=" + url
+				+ ", enable=" + enable + ", content=" + content + "]";
+	}
 	
-	
+
 }

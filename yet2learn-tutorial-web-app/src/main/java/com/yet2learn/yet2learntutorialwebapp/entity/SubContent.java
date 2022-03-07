@@ -29,7 +29,7 @@ public class SubContent extends Auditable<String> implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@Column(columnDefinition = "varchar(55)")
 	private String subContentHeading;
 
@@ -42,18 +42,17 @@ public class SubContent extends Auditable<String> implements Serializable {
 	private Long prevPageId;
 
 	private String subContentBody;
-	
+
 	private String subContentMetaURL;
 
 	private Integer hits;
-	
+
 	@Column(columnDefinition = "tinyint(1) default 1")
 	private boolean enable;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "content_id", referencedColumnName = "id", nullable = false)
 	private Content content;
-	
 
 	public Long getId() {
 		return id;
@@ -135,7 +134,4 @@ public class SubContent extends Auditable<String> implements Serializable {
 		this.content = content;
 	}
 
-
-	
 }
-
