@@ -19,7 +19,6 @@
 <!-- JS -->
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	
 </head>
 <body class="single-knowledgebase">
 
@@ -54,18 +53,24 @@
 							<div class="widget widget_categories">
 								<span class="icon icon-folder"></span>
 								<h4>Java Tutorial</h4>
-								
-								<ul th:each="toc,t : ${tableOfContents}">
-									<li ><a><strong><span th:text="${toc.contentHeading}" ></strong></span></a> 
-										<th:block th:each="subToc,s : ${toc.getSubContent()}">
+								<ul>
+									<li><a href="#"> Introduction </a>
 										<ul>
-											<li >
-											<a th:href="@{/{url}(url=${subToc.subContentMetaURL})}" ><span th:text="${subToc.subContentSortName}"></span></a>
-											</li>
-											
-										</ul>
-										</th:block>
-									</li>
+											<li><a href="#"> How to use this documentation? </a></li>
+											<li><a href="#"> How to find topics? </a></li>
+											<li><a href="#"> What is included and why? </a></li>
+											<li><a href="#"> Basic knowledge requirments. </a></li>
+											<li><a href="#"> Getting Started & What is next. </a></li>
+										</ul></li>
+									<li><a href="#"> Installation & Activation </a></li>
+									<li><a href="#"> Premium Members Features </a></li>
+									<li><a href="#"> API Usage & Guide lines </a></li>
+									<li><a href="#"> Getting Started & What is next. </a></li>
+									<li><a href="#"> Installation & Activation </a></li>
+									<li><a href="#"> Premium Members Features </a></li>
+									<li><a href="#"> API Usage & Guide lines </a></li>
+									<li><a href="#"> Getting Started & What is next. </a></li>
+
 								</ul>
 							</div>
 						</div>
@@ -82,15 +87,15 @@
 						<div class="row">
 							<div class="col-lg-8">
 								<ul class="meta">
-									<li><span>Modified By:</span> <span th:text="${content.lastModifiedBy}"></span></li>
-									<li><span>Last Updated:</span> <span th:text="${content.lastModifiedDate}"></span></li>
+									<li><span>Created By:</span> Jagannath Mishra</li>
+									<li><span>Last Updated:</span> April, 15, 2016</li>
 								</ul>
 							</div>
 							<div class="col-lg-2">
-								<a href="#" class="btn btn-success">&nbsp;<i class="fa fa-arrow-circle-left" style="font-size:22px"></i>&nbsp;&nbsp; Previous</a>
+								<a href="#" class="btn btn-success"><- Previous</a>
 							</div>
 							<div class="col-lg-2">
-								<a href="#" class="btn btn-success">Next &nbsp;&nbsp;<i class="fa fa-arrow-circle-right" style="font-size:22px"></i></a>
+								<a href="#" class="btn btn-success">Next -></a>
 							</div>
 						</div>
 
@@ -135,15 +140,15 @@
 							even slightly believable.</p>
 					</article>
 
-					<div class="row" >
+					<div class="row">
 						<div class="col-lg-2">
-								<a href="#" class="btn btn-success">&nbsp;<i class="fa fa-arrow-circle-left" style="font-size:22px"></i>&nbsp;&nbsp; Previous</a>
+							<a href="#" class="btn btn-success"><- Previous</a>
 						</div>
-						<div class="col-lg-8" >
-							<h3 ><i class="fa fa-angle-double-right" style="font-size:30px;color:red"></i> Read Next: topic</h3>
+						<div class="col-lg-8">
+							<h3>Next: topic</h3>
 						</div>
 						<div class="col-lg-2">
-						<a href="#" class="btn btn-success">Next &nbsp;&nbsp;<i class="fa fa-arrow-circle-right" style="font-size:22px"></i></a>
+							<a href="#" class="btn btn-success">Next -></a>
 						</div>
 					</div>
 					<div class="feedback">

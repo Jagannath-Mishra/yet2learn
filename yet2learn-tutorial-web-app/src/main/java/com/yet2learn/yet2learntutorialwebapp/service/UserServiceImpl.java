@@ -29,8 +29,8 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void save(User user) {
 		user.setPassword(pbkdf2PasswordEncoder.encode(user.getPassword()));
-		user.setRoles(new HashSet<>(roleRepository.findAll()));
-		//user.setRoles(new HashSet<>(roleRepository.findByName("USER")));
+		//	user.setRoles(new HashSet<>(roleRepository.findAll()));
+		user.setRoles(new HashSet<>(roleRepository.findByName("USER")));
 		userRepository.save(user);
 	}
 

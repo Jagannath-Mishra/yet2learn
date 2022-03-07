@@ -1,13 +1,28 @@
 package com.yet2learn.yet2learntutorialwebapp.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.yet2learn.yet2learntutorialwebapp.entity.SubContent;
+import com.yet2learn.yet2learntutorialwebapp.payload.SubContentResponseDTO;
+import com.yet2learn.yet2learntutorialwebapp.service.ContentService;
+import com.yet2learn.yet2learntutorialwebapp.service.CourseService;
+import com.yet2learn.yet2learntutorialwebapp.service.SubContentService;
 
 @Controller
 public class CommonController {
 	
+	@Autowired
+	CourseService courseService;
+	
+	@Autowired
+	ContentService contentService;
+	
+	@Autowired
+	SubContentService subContentService;
 	
 	@RequestMapping("/auth-user")
 	public String welcome(Model model) {
@@ -27,8 +42,12 @@ public class CommonController {
 		return "archive";
 	}
 	
-	@RequestMapping("/single")
-	public String single() {
+	@RequestMapping("/{url}")
+	public String single(@PathVariable("url") String url, Model model) {
+		model.addAttribute("courses", courseService.getAllCourse());
+		SubContentResponseDTO subContentDTO = subContentService.getSubContentByURL(url);
+		model.addAttribute("contents", subContentDTO);
+		model.addAttribute("tableOfContents", contentService.getContentById(subContentDTO.getContent().getId()));
 		return "single";
 	}
 	

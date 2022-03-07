@@ -2,14 +2,15 @@ package com.yet2learn.yet2learntutorialwebapp.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
 
 import com.yet2learn.yet2learntutorialwebapp.service.CustomUserDetailsService;
@@ -44,11 +45,18 @@ public class WebSecurityConfigurations extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/static/**", "/resources/**","/assets/**", "/sign-up").permitAll()
-		.antMatchers("/auth-user/**").authenticated()
-        .antMatchers("/**").permitAll()
-		.antMatchers("/read/**").hasAnyAuthority("CREATOR", "EDITOR", "ADMIN")
-		.antMatchers("/create/**").hasAnyAuthority("ADMIN", "CREATOR")
+//		http.authorizeRequests().antMatchers(HttpMethod.GET,"/static/**", "/resources/**","/assets/**", "/sign-up").permitAll()
+//		.anyRequest().authenticated()
+//		.antMatchers("/auth-user/**").authenticated()
+//		.antMatchers("/read/**").hasAnyAuthority("CREATOR", "EDITOR", "ADMIN")
+//		.antMatchers("/create/**").hasAnyAuthority("ADMIN", "CREATOR")
+//		.antMatchers("/edit/**").hasAnyAuthority("ADMIN","EDITOR")
+//		.antMatchers("/delete/**").hasAuthority("ADMIN")
+//		.anyRequest().authenticated().and().formLogin().loginPage("/sign-in").defaultSuccessUrl("/auth-user", true).permitAll().and().logout()
+//		.permitAll().and().exceptionHandling().accessDeniedPage("/403");
+		http.authorizeRequests().antMatchers("/assets/**","/css/**", "/js/**", "/sign-up").permitAll()
+		.antMatchers("/**").permitAll()
+		.antMatchers("/create/**").hasAnyAuthority("CREATOR","ADMIN", "EDITOR")
 		.antMatchers("/edit/**").hasAnyAuthority("ADMIN","EDITOR")
 		.antMatchers("/delete/**").hasAuthority("ADMIN")
 		.anyRequest().authenticated().and().formLogin().loginPage("/sign-in").defaultSuccessUrl("/auth-user", true).permitAll().and().logout()
@@ -60,5 +68,7 @@ public class WebSecurityConfigurations extends WebSecurityConfigurerAdapter {
 	public AuthenticationManager customAuthenticationManager() throws Exception {
 		return authenticationManager();
 	}
+	
+
 	
 }

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.yet2learn.yet2learntutorialwebapp.entity.User;
 import com.yet2learn.yet2learntutorialwebapp.payload.UserDTO;
+import com.yet2learn.yet2learntutorialwebapp.repository.SubContentRepository;
 import com.yet2learn.yet2learntutorialwebapp.service.SecurityService;
 import com.yet2learn.yet2learntutorialwebapp.service.UserService;
 import com.yet2learn.yet2learntutorialwebapp.validator.UserValidator;
@@ -29,6 +30,8 @@ public class UserController {
 
 	@Autowired
 	private SecurityService securityService;
+	
+	
 
 
 

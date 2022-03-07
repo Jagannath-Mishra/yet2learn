@@ -1,5 +1,6 @@
 package com.yet2learn.yet2learntutorialwebapp.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
@@ -21,7 +22,12 @@ import org.hibernate.validator.constraints.Length;
 
 @Entity
 @Table(name = "users")
-public class User {
+public class User implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4030692809378661563L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
